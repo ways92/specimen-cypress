@@ -16,13 +16,42 @@
  * @type {Cypress.PluginConfig}
  */
 // eslint-disable-next-line no-unused-vars
-module.exports = (on, config) => {
-  // `on` is used to hook into various events Cypress emits
-  // `config` is the resolved Cypress config
-}
+// module.exports = (on, config) => {
+//   // `on` is used to hook into various events Cypress emits
+//   // `config` is the resolved Cypress config
+// }
 
+// const cucumber = require('cypress-cucumber-preprocessor').default
+// const browserify = require('@cypress/browserify-preprocessor')
+// const resolve = require('resolve')
+// module.exports = (on, config) => {
+  //   const options = {
+    //     ...browserify.defaultOptions,
+    //     typescript: require.resolve( 'typescript' ),
+    //   };
+    
+    //   on('task', 'file:preprocessor', cucumber(options), {
+      //     downloadFile,
+      //     isFileExist,
+      //     findFiles,
+      //   } )
+      //   return config;
+      // }
+      
 const { downloadFile } = require('cypress-downloadfile/lib/addPlugin')
 const { isFileExist, findFiles } = require('cy-verify-downloads')
-module.exports = (on, config) => {
-  on('task', { downloadFile, isFileExist, findFiles })
-}
+const cucumber = require("cypress-cucumber-preprocessor").default;
+const browserify = require("@cypress/browserify-preprocessor");
+
+module.exports = (on) => {
+  const options = {
+    ...browserify.defaultOptions,
+    typescript: require.resolve("typescript"),
+  };
+
+  on("file:preprocessor", cucumber(options), {
+    downloadFile,
+    isFileExist,
+    findFiles,
+  })
+};
