@@ -1,2 +1,8 @@
 # specimen-cypress
-> Technologies/tools used : Cypress, Typscript, Page Object Model (POM), Data Driven Testing (DDT), Cucumber, Mochawesome Reporter
+Technologies/tools used : 
+- [X] Cypress 
+- [X] Typscript  
+- [X] Page Object Model (POM) 
+- [X] Data Driven Testing (DDT) 
+- [X] Cucumber 
+- [X] Mochawesome Reporter
